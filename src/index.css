@@ -1,0 +1,41 @@
+/* Apply Comic Neue globally with sensible fallbacks */
+:root {
+	--app-font: 'Comic Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+html, body, #root {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: var(--app-font);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #fff;
+	color: #111827; /* Tailwind's gray-900 fallback */
+}
+
+/* Ensure form elements inherit the app font */
+input, button, textarea, select {
+	font-family: inherit;
+}
+
+/* Headings maintain heavier weight but keep the same family */
+h1, h2, h3, h4, h5, h6 {
+	font-family: inherit;
+}
+
+/* Ensure Tailwind's .font-sans utility uses our Comic Neue font (overrides Tailwind defaults) */
+.font-sans {
+	font-family: var(--app-font) !important;
+}
+
+/* Small utility: reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.001ms !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
